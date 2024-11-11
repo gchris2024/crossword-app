@@ -22,7 +22,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class CrosswordView {
+public class CrosswordViewGame {
     private CrosswordModel theModel;
 
     /** Root container for our stage */
@@ -31,7 +31,7 @@ public class CrosswordView {
     /** Upper region of the scene */
     private BorderPane upperRegionContainer;
 
-    public CrosswordView(CrosswordModel theModel) {
+    public CrosswordViewGame(CrosswordModel theModel) {
         this.theModel = theModel;
 
         initSceneGraph();
@@ -45,7 +45,6 @@ public class CrosswordView {
      */
     private void initSceneGraph() {
         initializeRoot();
-        initializeWordBank();
         initializeUpperRegion();
     }
 
@@ -54,41 +53,13 @@ public class CrosswordView {
         this.root.setId("root");
     }
 
-    private void initializeWordBank() {
-        //Create Wordbank Container
-        BorderPane wordBankContainer = new BorderPane();
-        wordBankContainer.setId("itemContainerWordBank");
-
-        //Wordbank Header
-        BorderPane wordBankHeader = new BorderPane();
-        wordBankHeader.setId("wordBankHeader");
-        Button generateHintsButton = new Button("Generate Hints");
-        generateHintsButton.setId("generateHintsButton");
-        Label wordBankLabel = new Label("Word Bank:");
-        wordBankHeader.setLeft(wordBankLabel);
-        wordBankHeader.setRight(generateHintsButton);
-        wordBankContainer.setTop(wordBankHeader);
-
-        //Wordbank Input
-        TextField wordBankInput = new TextField();
-        wordBankContainer.setBottom(wordBankInput);
-
-        double percentOfWindow = 0.2;
-        wordBankInput.setPrefHeight(this.root.getHeight() * percentOfWindow);
-        this.root.heightProperty().addListener((obs, oldVal, newVal) -> {
-            wordBankInput.setPrefHeight(newVal.doubleValue() * percentOfWindow);
-        });
-
-        this.root.setBottom(wordBankContainer);
-    }
-
     private void initializeUpperRegion() {
         //Create Upper Region Container
         upperRegionContainer = new BorderPane();
         upperRegionContainer.setId("upperRegion");
         this.root.setTop(upperRegionContainer);
 
-        double percentOfWindow = 0.60;
+        double percentOfWindow = 1;
         upperRegionContainer.setPrefHeight(this.root.getHeight() * percentOfWindow);
         this.root.heightProperty().addListener((obs, oldVal, newVal) -> {
             upperRegionContainer.setPrefHeight(newVal.doubleValue() * percentOfWindow);

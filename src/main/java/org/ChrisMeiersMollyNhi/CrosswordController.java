@@ -18,9 +18,9 @@ package org.ChrisMeiersMollyNhi;
 public class CrosswordController {
 
     private CrosswordModel theModel;
-    private CrosswordView theView;
+    private CrosswordViewGame theView;
 
-    public CrosswordController(CrosswordModel theModel, CrosswordView theView) {
+    public CrosswordController(CrosswordModel theModel, CrosswordViewGame theView) {
         this.theModel = theModel;
         this.theView = theView;
 
