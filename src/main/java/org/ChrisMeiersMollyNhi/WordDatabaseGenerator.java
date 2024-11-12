@@ -1,4 +1,4 @@
-///* *****************************************
+package org.ChrisMeiersMollyNhi; ///* *****************************************
 // * CSCI 205 - Software Engineering and Design
 // * Fall 2024
 // * Instructor: Prof. Lily
@@ -17,10 +17,7 @@
 // * ****************************************
 // */
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,18 +27,27 @@ import java.util.Map;
  */
 public class WordDatabaseGenerator {
 
-    public static void main(String[] args) {
+    // Main map
+    private HashMap<String, String> wordsAndHints;
 
-        Map<String, String> wordsAndHints = new HashMap<String, String>();
+    public WordDatabaseGenerator() {}
+
+    /**
+     * Reads a text file. Separates words and hints with a colon (:).
+     * @author Chris
+     */
+    public void generateWordDatabase() {
+
+        this.wordsAndHints = new HashMap<String, String>();
 
         // Use a try-with-resources block to get an InputStream
-        try (InputStream inStream = WordDatabaseGenerator.class.getResourceAsStream("/list-of-words-and-hints.txt")) {
+        try (InputStream inStream = WordDatabaseGenerator.class.getResourceAsStream("/long-list-of-words-and-hints.txt")) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(inStream));
 
             // Read a line at a time
             String sLine = null;
             while ((sLine = reader.readLine()) != null) {
-                String[] words = sLine.split(":");
+                String[] words = sLine.split(":", 2);
                 String word = words[0].strip();
                 String hint = words[1].strip();
                 wordsAndHints.put(word, hint);
@@ -51,8 +57,7 @@ public class WordDatabaseGenerator {
             System.out.println(e);
         }
 
-        // For testing
-        wordsAndHints.forEach((word, hint) -> System.out.println(word + " : " + hint));
+        System.out.println("Total entries in map: " + wordsAndHints.size());
 
     }
 }

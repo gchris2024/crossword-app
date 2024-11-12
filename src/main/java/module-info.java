@@ -5,6 +5,5 @@ module csci205_final_project {
     requires javafx.graphics;
     requires javafx.controls;
     requires javafx.fxml;
-    exports org.ChrisMeiersMollyNhi.crosswordmvcmain;
-    exports;
+    exports org.ChrisMeiersMollyNhi;
 }

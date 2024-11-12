@@ -13,7 +13,7 @@
  *
  * ****************************************
  */
-package org.ChrisMeiersMollyNhi.crosswordmvcmain;
+package org.ChrisMeiersMollyNhi;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

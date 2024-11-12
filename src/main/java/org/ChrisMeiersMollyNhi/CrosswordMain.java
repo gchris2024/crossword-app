@@ -1,4 +1,4 @@
-package org.ChrisMeiersMollyNhi.crosswordmvcmain;
+package org.ChrisMeiersMollyNhi;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -30,6 +30,9 @@ public class CrosswordMain extends Application {
                         toExternalForm());
 
         this.theController = new CrosswordController(this.theModel, this.theView);
+
+        WordDatabaseGenerator generator = new WordDatabaseGenerator();
+        generator.generateWordDatabase();
 
         primaryStage.setTitle("Crossword!!");
         primaryStage.setScene(scene);

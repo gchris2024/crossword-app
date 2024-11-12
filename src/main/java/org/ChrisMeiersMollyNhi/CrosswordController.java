@@ -13,11 +13,18 @@
  *
  * ****************************************
  */
-package org.ChrisMeiersMollyNhi.crosswordmvcmain;
+package org.ChrisMeiersMollyNhi;
 
-public class CrosswordModel {
+public class CrosswordController {
 
-    public CrosswordModel() {
+    private CrosswordModel theModel;
+    private CrosswordView theView;
 
+    public CrosswordController(CrosswordModel theModel, CrosswordView theView) {
+        this.theModel = theModel;
+        this.theView = theView;
+
+//        initEventHandlers();
+//        initBindings();
     }
 }

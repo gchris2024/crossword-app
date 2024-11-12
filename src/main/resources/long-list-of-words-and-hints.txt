@@ -1,0 +1,281 @@
+apple: A fruit that keeps the doctor away
+python: A popular programming language
+eagle: A bird known for its sharp vision
+piano: A musical instrument with black and white keys
+mountain: A large natural elevation of the earth's surface
+river: A natural flowing watercourse
+planet: A large celestial body orbiting a star
+triangle: A shape with three sides
+oxygen: Essential gas for breathing
+ocean: A vast body of salt water covering Earth
+book: An object filled with pages of text or pictures
+giraffe: The tallest land animal
+computer: A device for processing data and performing calculations
+bicycle: A vehicle with two wheels powered by pedaling
+sunflower: A yellow flower that turns toward the sun
+island: Land surrounded by water
+galaxy: A system of stars, planets, and cosmic dust
+jazz: A genre of music with improvisation
+honey: A sweet substance made by bees
+volcano: A mountain that erupts with lava
+desert: A dry, sandy area with little rainfall
+microscope: An instrument for viewing tiny objects
+electricity: Power that lights our homes
+canyon: A deep valley with steep sides
+whale: A large marine mammal
+clock: A device that tells time
+rainbow: A colorful arc in the sky after rain
+castle: A fortified building from medieval times
+harbor: A place where ships dock
+asteroid: A small rocky body orbiting the sun
+camera: A device that captures images and memories
+cell: The basic building block of all living organisms
+compass: A tool that shows direction
+guitar: A musical instrument with strings
+jungle: A dense, tropical forest
+eclipse: When one celestial body moves into the shadow of another
+diamond: A precious gemstone
+chef: A person who prepares food
+parachute: A device for safe descent from high altitudes
+waterfall: Where a river falls from a high place
+glacier: A large mass of moving ice
+radio: A device that transmits audio signals
+wizard: A person skilled in magic
+algebra: A branch of mathematics dealing with symbols
+tornado: A violent rotating column of air
+quicksand: Sand that gives way under weight
+horizon: The line where the earth meets the sky
+cloud: A visible mass of condensed water vapor
+magnet: An object that attracts iron and steel
+reptile: A cold-blooded vertebrate
+insect: A small creature with six legs
+pyramid: A monumental structure in Egypt
+stadium: A large venue for sports events
+satellite: An object that orbits planets or moons
+spaceship: A vehicle designed for space travel
+astronaut: A person trained to travel in space
+meteor: A piece of rock or metal from space
+nebula: A cloud of gas and dust in space
+telescope: A device for viewing distant objects
+submarine: A watercraft that operates underwater
+cartography: The study and practice of map making
+geology: The study of Earth’s physical structure
+seismology: The study of earthquakes
+pendulum: A weight that swings back and forth
+xylophone: A musical instrument with wooden bars
+ballerina: A dancer in classical ballet
+puppet: A model moved by strings or hands
+origami: The art of paper folding
+antique: An object of historical significance
+alchemy: The medieval forerunner of chemistry
+mandolin: A stringed musical instrument
+bamboo: A fast-growing grass species
+aviator: A person who pilots aircraft
+millennium: A period of one thousand years
+hieroglyph: A character in the ancient Egyptian writing
+karate: A form of Japanese martial art
+microbe: A microscopic organism
+lepidoptera: The order of butterflies and moths
+photography: The art of capturing images
+mural: A large painting on a wall
+quartz: A hard mineral commonly found in rocks
+turbine: A machine for generating power
+peacock: A bird known for its colorful tail
+molecule: The smallest unit of a chemical compound
+carbohydrate: A biomolecule consisting of carbon, hydrogen, and oxygen
+quagmire: A soft, wet, boggy area of land
+abacus: An ancient tool for calculation
+bonsai: The art of growing miniature trees
+cipher: A method of transforming text to obscure its meaning
+flamenco: A traditional Spanish dance style
+graviton: A hypothetical quantum particle related to gravity
+hexagon: A six-sided polygon
+jamboree: A large celebration or gathering
+knapsack: A small backpack
+lynx: A wild cat with tufted ears
+marionette: A puppet controlled from above by strings
+nirvana: A state of perfect happiness or enlightenment
+octagon: An eight-sided polygon
+plasma: A state of matter distinct from solid, liquid, or gas
+quasar: A massive and extremely remote celestial object
+reagent: A substance used in a chemical reaction
+semaphore: A system of signaling using flags
+trilobite: An extinct marine arthropod
+ursine: Related to or resembling a bear
+vaccine: A biological preparation for immunity
+wombat: A burrowing marsupial native to Australia
+xerophyte: A plant adapted to survive in dry conditions
+yacht: A medium-sized sailboat or motorboat
+zeppelin: A type of rigid airship
+biome: A large naturally occurring community of flora and fauna
+cerebellum: The part of the brain responsible for motor control
+diorama: A model representing a scene
+effigy: A sculpture or model of a person
+fjord: A long, narrow, deep inlet of the sea between high cliffs
+gondola: A narrow flat-bottomed boat
+hydrofoil: A boat with wing-like foils mounted under the hull
+isotope: Variants of elements with different numbers of neutrons
+jukebox: A machine that plays selected music tracks
+karaoke: A form of entertainment in which people sing along
+limestone: A sedimentary rock composed of mineral calcite
+manatee: A large aquatic mammal
+nucleus: The central part of an atom
+osmosis: Movement of water molecules through a semi-permeable membrane
+photon: A particle representing a quantum of light
+quicksilver: Another name for the element mercury
+resonance: The reinforcement or prolongation of sound
+sapphire: A precious gemstone, typically blue
+turbulence: Irregular motion of the atmosphere
+uvula: The fleshy extension at the back of the throat
+vortex: A mass of whirling fluid or air
+wavelength: The distance between successive crests of a wave
+yodel: A form of singing with rapid changes in pitch
+zoology: The scientific study of animals
+accordion: A portable musical instrument with keys
+bazooka: A portable rocket launcher
+cumulus: A type of cloud with a puffy appearance
+dungeon: An underground prison cell
+epoxy: A type of adhesive or resin
+fossil: Preserved remains or traces of ancient organisms
+granite: A hard, coarse-grained rock
+hibiscus: A flowering plant with large blooms
+infrared: Electromagnetic radiation with wavelengths longer than visible light
+javelin: A light spear thrown in sports competitions
+keystone: A central stone at the summit of an arch
+labyrinth: A complicated irregular network of passages
+magma: Molten rock beneath the Earth's crust
+plankton: Small and microscopic organisms floating in water
+radiance: The light or heat emitted by something
+solstice: When the sun reaches its highest or lowest point in the sky
+thermometer: An instrument that measures temperature
+unicorn: A mythical horse-like creature with a single horn
+xenon: A chemical element, a noble gas
+yeti: A mythical creature resembling a large ape
+acetone: A colorless volatile liquid used as a solvent
+ballast: Heavy material placed low in a vessel for stability
+chlorophyll: The green pigment in plants responsible for photosynthesis
+dromedary: A one-humped camel
+enzyme: A protein that acts as a biological catalyst
+fuselage: The main body of an aircraft
+glucose: A simple sugar that is an important energy source
+hemisphere: Half of the Earth, typically divided into northern and southern
+ion: An atom or molecule with a net electric charge
+joule: A unit of energy in physics
+krypton: A chemical element, a noble gas
+ligament: A short band of tough, flexible tissue connecting bones
+microprocessor: The central unit of a computer
+neutrino: A subatomic particle with very low mass
+ozone: A molecule made up of three oxygen atoms
+proton: A subatomic particle with a positive electric charge
+quarantine: A state of isolation to prevent the spread of disease
+radiology: The science of using X-rays in medicine
+spatula: A flat utensil used in cooking
+tectonics: The study of Earth's structural features
+umbra: The darkest part of a shadow
+vertebra: Each of the bones in the spine
+wafer: A thin, light, crisp biscuit
+xerox: A brand name often used to mean photocopy
+yolk: The yellow part of an egg
+zeppelin: A type of large German airship
+avalanche: A sudden slide of a large amount of snow down a mountainside
+bonsai: The Japanese art of cultivating miniature trees
+caffeine: A stimulant found in coffee and tea
+deltoid: A large triangular muscle covering the shoulder
+ellipsis: A series of dots indicating an omission
+fermentation: The process by which yeast converts sugar into alcohol
+grapefruit: A citrus fruit known for its sour taste
+hologram: A 3D image created using laser technology
+incubator: A device for maintaining controlled conditions for growth
+jukebox: A machine that plays selected music tracks
+kilobyte: A unit of memory equal to 1024 bytes
+lobotomy: A surgical operation involving an incision into the prefrontal lobe
+meander: To follow a winding course
+nodule: A small swelling or aggregation of cells in the body
+obelisk: A tall, four-sided, narrow monument
+petroleum: A liquid fossil fuel used to make gasoline
+quicksand: Loose sand that yields easily to weight
+rubidium: A soft, silvery metal in the alkali metal group
+sequoia: A very tall species of tree
+topaz: A precious stone typically found in yellow
+ultramarine: A vivid blue pigment originally made from lapis lazuli
+vacuum: A space entirely devoid of matter
+windmill: A structure that converts wind energy into rotational energy
+xylophone: A percussion instrument with wooden bars
+yew: A type of evergreen tree or shrub
+aardvark: A nocturnal burrowing mammal native to Africa
+barometer: An instrument measuring atmospheric pressure
+crater: A large bowl-shaped cavity in the ground
+dynamo: A machine for converting mechanical energy into electrical energy
+eucalyptus: A fast-growing evergreen tree native to Australia
+fjord: A long, narrow, deep inlet of the sea between high cliffs
+ginkgo: A tree native to China, known for its fan-shaped leaves
+hurricane: A storm with violent wind, typically tropical
+ignition: The action of setting something on fire
+jasmine: A fragrant flowering plant often used in perfumes
+koala: A tree-dwelling marsupial native to Australia
+latitude: The distance of a place north or south of the equator
+meteorology: The scientific study of weather and climate
+nectar: A sugary fluid secreted by flowers to attract pollinators
+orbital: Relating to the path of an object around another in space
+pyrite: A shiny, metallic mineral also known as fool's gold
+respiration: The process of breathing
+synapse: The junction between two nerve cells
+transistor: A semiconductor device used to amplify or switch electronic signals
+ultrasound: Sound waves with frequencies above the range of human hearing
+vertebrate: An animal with a backbone
+wombat: A burrowing herbivorous marsupial
+xylitol: A sugar alcohol used as a sweetener
+yttrium: A rare metallic element used in electronics
+zephyr: A gentle, mild breeze
+amethyst: A purple variety of quartz used as a gemstone
+brontosaurus: A large herbivorous dinosaur
+carcinogen: A substance capable of causing cancer
+detoxification: The removal of toxic substances from a body
+ethanol: A type of alcohol found in alcoholic beverages
+fathom: A unit of length equal to six feet, used in measuring water depth
+glyph: A symbolic figure or character
+hydrogen: The lightest chemical element, symbol H
+inertia: A property of matter that resists change in motion
+jaguar: A large spotted feline found in Central and South America
+kaleidoscope: A tube with mirrors and colorful objects that create patterns
+limousine: A large, luxurious car often chauffeur-driven
+manganese: A metallic element important in steel production
+nebula: A cloud of gas and dust in outer space
+obsidian: A naturally occurring volcanic glass
+polypeptide: A chain of amino acids
+quasar: An extremely luminous active galactic nucleus
+refraction: The bending of light as it passes through different mediums
+sediment: Matter that settles to the bottom of a liquid
+tectonic: Relating to the structure of the Earth's crust
+uranium: A radioactive element used as fuel in nuclear reactors
+violin: A stringed musical instrument played with a bow
+wolverine: A large, carnivorous mammal native to the Northern Hemisphere
+xylography: The art of engraving on wood
+yogurt: A semi-solid food made by bacterial fermentation of milk
+zymurgy: The branch of chemistry related to fermentation
+atlas: A book of maps or charts
+basilisk: A mythical serpent said to cause death with its gaze
+catalyst: A substance that increases the rate of a chemical reaction
+dolomite: A type of limestone rich in magnesium
+enzyme: A protein that acts as a catalyst in the body
+fluorine: A pale yellow gas that is the most reactive element
+gyroscope: A device that uses Earth's gravity to help determine orientation
+hibernation: A state of inactivity and metabolic depression in animals
+ichthyology: The branch of zoology that deals with fishes
+jubilee: A special anniversary or celebration
+kiln: A furnace or oven for baking, burning, or drying
+lichen: A composite organism arising from algae or cyanobacteria
+molecule: The smallest particle in a chemical element or compound
+neutron: A subatomic particle with no electric charge
+opacity: The measure of transparency or lack thereof
+phosphorus: A chemical element essential for living organisms
+quinine: A medication used to treat malaria
+reaction: A response to a stimulus
+sulfur: A yellow chemical element used in many processes
+thallium: A soft, gray metal used in electronics and optics
+umbra: The darkest part of a shadow, especially the cone-shaped region of full shadow
+vacation: A period of leisure and recreation
+watershed: An area of land that separates waters flowing to different rivers
+xenophobia: Fear or hatred of strangers or foreigners
+yosemite: A national park in California known for its stunning vistas
+zeppelin: A large rigid airship used in the early 20th century
