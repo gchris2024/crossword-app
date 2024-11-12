@@ -1,21 +1,4 @@
-package org.ChrisMeiersMollyNhi; ///* *****************************************
-// * CSCI 205 - Software Engineering and Design
-// * Fall 2024
-// * Instructor: Prof. Lily
-// *
-// * Name: Chris Garcia
-// * Section: 01 - 09:00
-// * Date: 11/11/2024
-// * Time: 10:33 AM
-// *
-// * Project: csci205_final_project
-// * Package: PACKAGE_NAME
-// * Class: WordGenerator
-// *
-// * Description:
-// *
-// * ****************************************
-// */
+package org.ChrisMeiersMollyNhi;
 
 import java.io.*;
 import java.util.HashMap;
