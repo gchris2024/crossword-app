@@ -1,4 +1,4 @@
-package org.ChrisMeiersMollyNhi;
+package org.ChrisMeiersMollyNhi.crosswordmvcmain;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
