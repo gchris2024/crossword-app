@@ -31,6 +31,9 @@ public class CrosswordMain extends Application {
 
         this.theController = new CrosswordController(this.theModel, this.theView);
 
+        WordDatabaseGenerator generator = new WordDatabaseGenerator();
+        generator.returnRandomWord();
+
         primaryStage.setTitle("Crossword!!");
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();

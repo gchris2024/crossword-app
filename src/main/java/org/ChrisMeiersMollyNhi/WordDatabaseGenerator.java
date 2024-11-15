@@ -1,8 +1,7 @@
 package org.ChrisMeiersMollyNhi;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Reads a txt file to store words and their corresponding hints into a {@link Map}
@@ -10,17 +9,13 @@ import java.util.Map;
  */
 public class WordDatabaseGenerator {
 
-    // Main map
+    /** Random number generator */
+    private Random rng = new Random();
+
+    /** Main map of words and hints */
     private HashMap<String, String> wordsAndHints;
 
-    public WordDatabaseGenerator() {}
-
-    /**
-     * Reads a text file. Separates words and hints with a colon (:).
-     * @author Chris
-     */
-    public void generateWordDatabase() {
-
+    public WordDatabaseGenerator() {
         this.wordsAndHints = new HashMap<String, String>();
 
         // Use a try-with-resources block to get an InputStream
@@ -40,7 +35,18 @@ public class WordDatabaseGenerator {
             System.out.println(e);
         }
 
-        System.out.println("Total entries in map: " + wordsAndHints.size());
+//        System.out.println("Total entries in map: " + wordsAndHints.size());
 
     }
+    /**
+     * Returns a random word from the database
+     * @author Chris
+     */
+    public String returnRandomWord() {
+        List<String> keys = new ArrayList<String>(wordsAndHints.keySet());
+        return keys.get(rng.nextInt(wordsAndHints.size()));
+    }
+
+
+
 }
