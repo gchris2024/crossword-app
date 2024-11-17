@@ -13,7 +13,7 @@ Chris: Sophomore, Computer Science & Engineering
 
 Nhi: 
 
-Molly:
+Molly: Junior, Applied Mathematical Sciences
 ## Project Information
 Crossword!!
 ## How to run it
