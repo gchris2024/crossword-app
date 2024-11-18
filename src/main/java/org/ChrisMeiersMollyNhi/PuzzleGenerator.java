@@ -19,6 +19,7 @@
 package org.ChrisMeiersMollyNhi;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PuzzleGenerator {
 
@@ -83,14 +84,7 @@ public class PuzzleGenerator {
         char[][] crossword = new char[numRows][numCols];
 
         // Place first word in center of puzzle
-        String firstWord = words.getFirst();
-        char[] chars = firstWord.toCharArray();
-        for(char c:chars){
-            int row = numRows/2;
-            for(int col=(numCols/2)-(chars.length/2); col<(numCols/2)-(chars.length/2)+chars.length; col++){
-                crossword[row][col] = c;
-            }
-        }
+        placeFirstWord(crossword);
 
         // Place the rest of the words on the puzzle
         for(int i=1; i< words.size(); i++){
@@ -103,17 +97,51 @@ public class PuzzleGenerator {
                         // Check if letter in puzzle space matches a letter in the word to place
                         // and confirm that the space is available as an intersection point
                         if(crossword[row][col] == letter && validateOpen(crossword,row,col)){
+                            char[] lettersToPlace = word.toCharArray();
+                            int idx = Arrays.binarySearch(lettersToPlace, letter);
                             // Pick direction
-                            
-                            // Fill in word in appropriate direction
+                            // and fill in word in appropriate direction
+                            if((crossword[row-1][col]=='\u0000' && crossword[row+1][col]=='\u0000' )){
+                                // Place word vertical
+                                for(int n = idx; n >0; n--){
+                                    crossword[row-n][col] = lettersToPlace[idx-n];
+                                }
+                                for(int n = 1; n<lettersToPlace.length-idx; n++){
+                                    crossword[row+n][col] = lettersToPlace[idx+n];
+                                }
+                            }
+                            if((crossword[row][col-1]=='\u0000' && crossword[row][col+1]=='\u0000' )){
+                                // Place word horizontal
+                                for(int n = idx; n >0; n--){
+                                    crossword[row][col-n] = lettersToPlace[idx-n];
+                                }
+                                for(int n = 1; n<lettersToPlace.length-idx; n++){
+                                    crossword[row][col+n] = lettersToPlace[idx+n];
+                                }
+                            }
                         }
                     }
                 }
             }
-
         }
 
         return crossword;
+    }
+
+    /**
+     * Place the first word in the center of the puzzle
+     *
+     * @param crossword the crossword puzzle grid
+     */
+    private void placeFirstWord(char[][] crossword) {
+        String firstWord = words.getFirst();
+        char[] chars = firstWord.toCharArray();
+        for(char c:chars){
+            int row = numRows/2;
+            for(int col=(numCols/2)-(chars.length/2); col<(numCols/2)-(chars.length/2)+chars.length; col++){
+                crossword[row][col] = c;
+            }
+        }
     }
 
     /**
