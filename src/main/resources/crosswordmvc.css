@@ -1,10 +1,16 @@
-#itemContainerWordBank, #itemContainerHintBox, #itemContainerGrid {
+#itemContainerWordBank, #itemContainerHintBox, #itemContainerGrid, #scrollPaneHintBox {
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
     -fx-background-color: #fff;
     -fx-padding: 10px;
     -fx-border-color: #000;
     -fx-border-width: 2px;
+}
+
+#scrollPaneHintBox .viewport {
+    -fx-background-color: #fff;
+    -fx-background-radius: 10px;
+    -fx-padding: 0; /* Optional: Adjust padding for better alignment */
 }
 
 #root {

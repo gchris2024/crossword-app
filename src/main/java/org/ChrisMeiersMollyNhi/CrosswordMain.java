@@ -7,14 +7,14 @@ import javafx.stage.Stage;
 public class CrosswordMain extends Application {
 
     private CrosswordModel theModel;
-    private CrosswordViewGame theView;
+    private CrosswordViewEdtech theView;
     private CrosswordController theController;
 
     @Override
     public void init() throws Exception {
         super.init();
         this.theModel = new CrosswordModel();
-        this.theView = new CrosswordViewGame(this.theModel);
+        this.theView = new CrosswordViewEdtech(this.theModel);
     }
 
     public static void main(String[] args) {
