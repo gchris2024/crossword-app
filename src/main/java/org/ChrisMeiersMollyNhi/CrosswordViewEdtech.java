@@ -15,10 +15,7 @@
  */
 package org.ChrisMeiersMollyNhi;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -136,7 +133,7 @@ public class CrosswordViewEdtech {
     private void initializeWordList(BorderPane wordListBox) {
         BorderPane wordBankContainer = new BorderPane();
 
-        //Wordbank Header
+        // Wordbank Header
         BorderPane wordBankHeader = new BorderPane();
         wordBankHeader.setId("wordBankHeader");
         Button generateHintsButton = new Button("Generate Hints");
@@ -146,8 +143,9 @@ public class CrosswordViewEdtech {
         wordBankHeader.setRight(generateHintsButton);
         wordBankContainer.setTop(wordBankHeader);
 
-        //Wordbank Input
-        TextField wordBankInput = new TextField();
+        // Wordbank Input
+        TextArea wordBankInput = new TextArea(); // Use TextArea instead of TextField
+        wordBankInput.setWrapText(true); // Enable text wrapping for better user experience
         wordBankContainer.setBottom(wordBankInput);
 
         double percentOfWindow = 0.8;
@@ -158,6 +156,7 @@ public class CrosswordViewEdtech {
 
         wordListBox.setBottom(wordBankContainer);
     }
+
 
     private void dynamicSizingGridWordList(BorderPane wordListContainer, BorderPane gridContainer) {
         // Set dynamic widths if desired
