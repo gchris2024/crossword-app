@@ -6,4 +6,5 @@ module csci205_final_project {
     requires javafx.controls;
     requires javafx.fxml;
     exports org.ChrisMeiersMollyNhi;
+    exports org.ChrisMeiersMollyNhi.Controllers;
 }

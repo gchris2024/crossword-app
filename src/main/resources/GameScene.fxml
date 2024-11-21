@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ChrisMeiersMollyNhi.GameController">
+<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ChrisMeiersMollyNhi.Controllers.GameController">
    <children>
       <Button layoutX="41.0" layoutY="710.0" mnemonicParsing="false" onAction="#switchToMainScene" text="Go Back">
          <font>

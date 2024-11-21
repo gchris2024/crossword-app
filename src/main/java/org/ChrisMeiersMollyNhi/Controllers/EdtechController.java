@@ -1,5 +1,5 @@
 
-package org.ChrisMeiersMollyNhi;
+package org.ChrisMeiersMollyNhi.Controllers;
 
 import javafx.event.ActionEvent;
 

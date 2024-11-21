@@ -1,9 +1,9 @@
 
-package org.ChrisMeiersMollyNhi;
+package org.ChrisMeiersMollyNhi.Controllers;
 
 import javafx.event.ActionEvent;
 
-public class MainSceneController extends BaseController{
+public class MainSceneController extends BaseController {
 
     public void switchToEdtech(ActionEvent event) throws Exception {
         mainScene.switchScene("/EdtechScene.fxml");

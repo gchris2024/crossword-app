@@ -46,7 +46,7 @@ dependencies {
 
 application {
     mainModule = "csci205_final_project"
-    mainClass = "org.ChrisMeiersMollyNhi.CrosswordFXMain"
+    mainClass = "org.ChrisMeiersMollyNhi.CrosswordMain"
 
     if (project.hasProperty("mainClass")) {
         mainClass.set(project.property("mainClass").toString())
