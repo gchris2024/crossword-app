@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ChrisMeiersMollyNhi.Controllers.EdtechController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ChrisMeiersMollyNhi.Controllers.EdtechController">
    <children>
       <HBox alignment="CENTER" layoutY="300.0" prefHeight="199.0" prefWidth="500.0" style="-fx-background-radius: 10px; -fx-border-radius: 10px; -fx-background-color: #fff; -fx-padding: 10px; -fx-border-color: #000; -fx-border-width: 2px;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <children>
@@ -52,7 +52,7 @@
             <Button fx:id="btnGenerateHints" mnemonicParsing="false" style="-fx-background-color: #fff; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 1px; -fx-border-color: #000;" text="Generate Hints" BorderPane.alignment="CENTER" />
          </right>
          <bottom>
-            <TextArea fx:id="textareaWordList" prefHeight="200.0" prefWidth="200.0" wrapText="true" BorderPane.alignment="CENTER" />
+            <TextArea fx:id="textareaWordList" prefHeight="494.0" prefWidth="176.0" wrapText="true" BorderPane.alignment="CENTER" />
          </bottom>
       </BorderPane>
       <BorderPane layoutX="50.0" layoutY="49.0" prefHeight="278.0" prefWidth="265.0" style="-fx-border-radius: 10px; -fx-background-radius: 10px; -fx-background-color: #fff; -fx-padding: 10px; -fx-border-color: #000; -fx-border-width: 2px;" AnchorPane.bottomAnchor="220.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="10.0" />
