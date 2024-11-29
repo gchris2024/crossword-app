@@ -37,4 +37,11 @@ public class CrosswordFXMain extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
+
+    public Parent getRoot() {
+        if (primaryStage.getScene() != null) {
+            return primaryStage.getScene().getRoot();
+        }
+        return null; // In case no scene is set
+    }
 }

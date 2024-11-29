@@ -15,7 +15,8 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="btnGoBack" layoutX="12.0" layoutY="76.0" mnemonicParsing="false" onAction="#switchToMainScene" style="-fx-background-color: #fff; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 1px; -fx-border-color: #000;" text="Go Back" />
+                  <Button fx:id="btnGoBack" layoutY="74.0" mnemonicParsing="false" onAction="#switchToMainScene" style="-fx-background-color: #fff; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 1px; -fx-border-color: #000;" text="Go Back" />
+                  <Button fx:id="btnRegenerateHints" layoutX="-24.0" layoutY="115.0" mnemonicParsing="false" onAction="#regenerateHints" style="-fx-background-color: #fff; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 1px; -fx-border-color: #000;" text="Regenerate Hints" />
                </children>
             </Pane>
             <HBox fx:id="hboxMainContainer" prefHeight="100.0" prefWidth="200.0">
@@ -49,7 +50,7 @@
             <Label fx:id="lblWordBank" text="Word Bank:" BorderPane.alignment="CENTER" />
          </left>
          <right>
-            <Button fx:id="btnGenerateHints" mnemonicParsing="false" style="-fx-background-color: #fff; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 1px; -fx-border-color: #000;" text="Generate Hints" BorderPane.alignment="CENTER" />
+            <Button fx:id="btnGeneratePuzzle" mnemonicParsing="false" onAction="#generatePuzzle" style="-fx-background-color: #fff; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 1px; -fx-border-color: #000;" text="Generate Puzzle" BorderPane.alignment="CENTER" />
          </right>
          <bottom>
             <TextArea fx:id="textareaWordList" prefHeight="494.0" prefWidth="176.0" wrapText="true" BorderPane.alignment="CENTER" />
