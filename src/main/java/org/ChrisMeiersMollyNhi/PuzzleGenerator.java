@@ -32,6 +32,12 @@ public class PuzzleGenerator {
     /** The number of columns available to place letters within */
     private int numCols;
 
+    /** An ArrayList of the words placed vertically */
+    private ArrayList<String> verticalWords;
+
+    /** An ArrayList of the words placed horizontally */
+    private ArrayList<String> horizontalWords;
+
     /**
      * Initialize list of words and size of puzzle grid
      *
@@ -100,7 +106,7 @@ public class PuzzleGenerator {
                     for(char letter : letters){
                         // Check if letter in puzzle space matches a letter in the word to place
                         // and confirm that the space is available as an intersection point
-                        if(crossword[row][col] == letter && validateOpen(crossword,row,col) && !placed){
+                        if(crossword[row][col] == letter && validateOpen(crossword,row,col) && wordFits(crossword, row, col, word) && !placed){
                             placeOtherWords(letter, word, crossword, row, col);
                             placed = true;
                         }
@@ -121,7 +127,7 @@ public class PuzzleGenerator {
      * @param row the row index of the intersection point between words
      * @param col the column index of the intersection point between words
      */
-    private static void placeOtherWords(char letter, String word, char[][] crossword, int row, int col) {
+    private void placeOtherWords(char letter, String word, char[][] crossword, int row, int col) {
         char[] lettersToPlace = word.toCharArray();
         int idx = -1;
         for(int i=0; i<lettersToPlace.length; i++){
@@ -139,6 +145,9 @@ public class PuzzleGenerator {
             for(int n = 1; n<lettersToPlace.length-idx; n++){ // second part of word
                 crossword[row +n][col] = lettersToPlace[idx+n];
             }
+
+            // Add word to list of words
+            this.verticalWords.add(word);
         }
         if((crossword[row][col -1]=='\u0000' && crossword[row][col +1]=='\u0000' )){
             // Place word horizontal
@@ -148,6 +157,9 @@ public class PuzzleGenerator {
             for(int n = 1; n<lettersToPlace.length-idx; n++){ // second part of word
                 crossword[row][col +n] = lettersToPlace[idx+n];
             }
+
+            // Add word to list of words
+            this.horizontalWords.add(word);
         }
     }
 
@@ -179,11 +191,87 @@ public class PuzzleGenerator {
      */
     public boolean validateOpen(char[][] crossword, int row, int col){
         boolean open = true;
-        if((crossword[row-1][col]!='\u0000' || crossword[row][col-1]!='\u0000' )&&
-                (crossword[row+1][col]!='\u0000' || crossword[row][col+1]!='\u0000')
+        // Validate that intersection point  is open
+        if((crossword[row-1][col]!='\u0000' && crossword[row][col-1]!='\u0000' )||
+                (crossword[row+1][col]!='\u0000' && crossword[row][col+1]!='\u0000')||
+                (crossword[row-1][col]!='\u0000' && crossword[row][col+1]!='\u0000' )||
+                (crossword[row+1][col]!='\u0000' && crossword[row][col-1]!='\u0000' )
         ) {
-            open = false;
+                open = false;
         }
         return open;
+    }
+
+    /**
+     * Validates the word can fit without intersecting any words other than what it is supposed to
+     *
+     * @param crossword the puzzle grid
+     * @param row the row index of the planned intersection
+     * @param col the column index of the planned intersection
+     * @param word the word which is to be placed
+     * @return a boolean value indicating if the word can be placed
+     */
+    public boolean wordFits(char[][] crossword, int row, int col, String word){
+        boolean fits = true;
+
+        // Check other surrounding spaces to ensure that word will fit
+        char letter = crossword[row][col];
+        int letterIdx = word.indexOf(letter);
+        char[] lettersToPlace = word.toCharArray();
+        int beginLength = letterIdx+1;
+        int endLength = word.length()-letterIdx;
+
+        // Determine word orientation and check for fit
+        if((crossword[row -1][col]=='\u0000' && crossword[row +1][col]=='\u0000' )){
+            // Vertical orientation
+            for(int n = letterIdx; n >0; n--){ // first part of word
+                if(crossword[row -n][col] != '\u0000' || crossword[row-n][col-1] != '\u0000' || crossword[row-n][col+1] != '\u0000'){
+                    fits = false;
+                }
+            }
+            for(int n = 1; n<lettersToPlace.length-letterIdx; n++){ // second part of word
+                if (crossword[row +n][col] != '\u0000' || crossword[row+n][col-1] != '\u0000' || crossword[row+n][col+1] != '\u0000'){
+                    fits = false;
+                }
+            }
+            // Ensures words don't run into each other consecutively
+            if(crossword[row-beginLength][col] != '\u0000' || crossword[row+beginLength][col] != '\u0000'){
+                fits = false;
+            }
+        }
+        if((crossword[row][col -1]=='\u0000' && crossword[row][col +1]=='\u0000' )){
+            // Horizontal orientation
+            for(int n = letterIdx; n >0; n--){ // first part of word
+                if (crossword[row][col -n] != '\u0000' || crossword[row-1][col-n] != '\u0000' || crossword[row+1][col-n] != '\u0000'){
+                    fits = false;
+                }
+            }
+            for(int n = 1; n<lettersToPlace.length-letterIdx; n++){ // second part of word
+                if (crossword[row][col +n] != '\u0000' || crossword[row-1][col+n] != '\u0000' || crossword[row+1][col+n] != '\u0000'){
+                    fits = false;
+                }
+            }
+            // Ensures words don't run into each other consecutively
+            if(crossword[row][col-beginLength] != '\u0000' || crossword[row][col+endLength] != '\u0000'){
+                fits = false;
+            }
+        }
+        return fits;
+    }
+
+    /**
+     * Get the list of words placed horizontally
+     * @return an ArrayList<String> of the words placed horizontally
+     */
+    public ArrayList<String> getHorizontalWords() {
+        return horizontalWords;
+    }
+
+    /**
+     * Get the list of words placed vertically
+     * @return an ArrayList<String> of the words placed vertically
+     */
+    public ArrayList<String> getVerticalWords() {
+        return verticalWords;
     }
 }
