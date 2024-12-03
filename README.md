@@ -11,7 +11,7 @@ Meiers: Senior, Neuroscience
 
 Chris: Sophomore, Computer Science & Engineering
 
-Nhi: 
+Nhi: Sophomore, Computer Science
 
 Molly: Junior, Applied Mathematical Sciences
 ## Project Information

@@ -7,4 +7,8 @@ module csci205_final_project {
     requires javafx.fxml;
     exports org.ChrisMeiersMollyNhi;
     exports org.ChrisMeiersMollyNhi.Controllers;
+
+    requires okhttp3;            // For making HTTP requests with OkHttp
+    requires com.google.gson;
+    requires java.net.http;
 }
