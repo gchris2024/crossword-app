@@ -47,6 +47,8 @@ public class PuzzleGenerator {
         this.words = words;
         this.numRows = 20; // Temporary value for initial development
         this.numCols = 20; // Temporary value for initial development
+        this.verticalWords = new ArrayList<>(); // Initialize verticalWords
+        this.horizontalWords = new ArrayList<>(); // Initialize horizontalWords
     }
 
     /**
@@ -170,6 +172,7 @@ public class PuzzleGenerator {
      */
     private void placeFirstWord(char[][] crossword) {
         String firstWord = words.getFirst();
+        this.horizontalWords.add(firstWord);
         char[] chars = firstWord.toCharArray();
         int row = numRows/2;
         int charIdx = 0;
