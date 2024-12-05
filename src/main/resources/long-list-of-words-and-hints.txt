@@ -188,7 +188,6 @@ hologram: A 3D image created using laser technology
 incubator: A device for maintaining controlled conditions for growth
 jukebox: A machine that plays selected music tracks
 kilobyte: A unit of memory equal to 1024 bytes
-lobotomy: A surgical operation involving an incision into the prefrontal lobe
 meander: To follow a winding course
 nodule: A small swelling or aggregation of cells in the body
 obelisk: A tall, four-sided, narrow monument
