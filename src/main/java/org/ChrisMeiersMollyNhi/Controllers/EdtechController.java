@@ -41,7 +41,7 @@ public class EdtechController extends BaseController {
         ;
 
         // Check input formatting
-        if (formattingStatus && wordLengthStatus) {
+        if (formattingStatus && wordLengthStatus && checkFormatting(getInput)) {
             buildCrossword(crossword);
 
 
@@ -55,15 +55,10 @@ public class EdtechController extends BaseController {
         }
     }
 
-    private boolean checkFormatting() {
-        TextArea textArea = (TextArea) mainScene.getRoot().lookup("#textareaWordList");
-        if (textArea == null) {
-            return false;
-        }
-
-        String[] lines = textArea.getText().split("\\r?\\n");
+    private boolean checkFormatting(ArrayList<String> getInput) {
+        //check if getInput has only letters in each string
         ArrayList<String> wordList = new ArrayList<>();
-        for (String line : lines) {
+        for (String line : getInput) {
             if (!line.matches("[a-zA-Z]+")) {
                 return false;
             }
@@ -93,6 +88,8 @@ public class EdtechController extends BaseController {
             vboxLeftContainer.getChildren().clear();
             vboxRightContainer.getChildren().clear();
 
+//            CallAPI callApi = new CallAPI();
+
             // Add new hints
             for (String word : this.verticalWordsList) {
                 String hint = CallAPI.generateHint(word);
@@ -107,8 +104,11 @@ public class EdtechController extends BaseController {
             }
 
         } else {
-            // Throw an error message
-            System.out.println("No puzzle generated yet.");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("No Puzzle Generated Yet");
+            alert.setHeaderText("No Puzzle Generated Yet");
+            alert.setContentText("Please enter a list of words and click \"generate\" before trying to view hints.");
+            alert.showAndWait();
         }
 
     }
