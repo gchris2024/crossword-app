@@ -51,6 +51,8 @@ public class PuzzleGenerator {
         this.numCols = 20; // Temporary value for initial development
         this.verticalWords = new ArrayList<>(); // Initialize verticalWords
         this.horizontalWords = new ArrayList<>(); // Initialize horizontalWords
+        this.horizIndices = new ArrayList<ArrayList<Integer>>();
+        this.vertIndices = new ArrayList<ArrayList<Integer>>();
     }
 
     /**
