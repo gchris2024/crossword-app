@@ -159,9 +159,9 @@ public class EdtechController extends BaseController {
                     textField.setStyle("-fx-background-color: #000; -fx-border-color: black;");
                     textField.setEditable(false);
                 } else {
-                    textField.setText(Character.toString(crossword[i][j]));
+//                    textField.setText(Character.toString(crossword[i][j]));
                     textField.setStyle("-fx-background-color: #ffffff; -fx-border-color: black;");
-                    textField.setEditable(true);
+                    textField.setEditable(false);
                 }
 
                 // Ensure the TextField fills its cell
