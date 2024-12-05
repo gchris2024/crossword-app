@@ -19,7 +19,6 @@
 package org.ChrisMeiersMollyNhi;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class PuzzleGenerator {
 
@@ -37,6 +36,9 @@ public class PuzzleGenerator {
 
     /** An ArrayList of the words placed horizontally */
     private ArrayList<String> horizontalWords;
+
+    private ArrayList<ArrayList<Integer>> horizIndices;
+    private ArrayList<ArrayList<Integer>> vertIndices;
 
     /**
      * Initialize list of words and size of puzzle grid
@@ -143,6 +145,13 @@ public class PuzzleGenerator {
             // Place word vertical
             for(int n = idx; n >0; n--){ // first part of word
                 crossword[row -n][col] = lettersToPlace[idx-n];
+
+                if(vertIndices.size()!=this.verticalWords.size()){
+                    ArrayList<Integer> index = new ArrayList<>();
+                    index.add(row);
+                    index.add(col);
+                    vertIndices.add(index);
+                }
             }
             for(int n = 1; n<lettersToPlace.length-idx; n++){ // second part of word
                 crossword[row +n][col] = lettersToPlace[idx+n];
@@ -155,6 +164,13 @@ public class PuzzleGenerator {
             // Place word horizontal
             for(int n = idx; n >0; n--){ // first part of word
                 crossword[row][col -n] = lettersToPlace[idx-n];
+
+                if(horizIndices.size()!=this.horizontalWords.size()){
+                    ArrayList<Integer> index = new ArrayList<>();
+                    index.add(row);
+                    index.add(col);
+                    horizIndices.add(index);
+                }
             }
             for(int n = 1; n<lettersToPlace.length-idx; n++){ // second part of word
                 crossword[row][col +n] = lettersToPlace[idx+n];
@@ -180,6 +196,14 @@ public class PuzzleGenerator {
             char c = chars[charIdx];
             crossword[row][col] = c;
             charIdx++;
+
+            // Save index of first letter
+            if(horizIndices.size()==0){
+                ArrayList<Integer> idx = new ArrayList<>();
+                idx.add(row);
+                idx.add(col);
+                horizIndices.add(idx);
+            }
         }
 
     }
@@ -260,6 +284,62 @@ public class PuzzleGenerator {
             }
         }
         return fits;
+    }
+
+    /**
+     * Gets the set of indices to be labeled with an index for each work which will be used for hint matching
+     * @param crossword the crossword puzzle
+     * @return an ArrayList<ArrayList<Integer>> containing the indices of the box to be labeled
+     */
+    public ArrayList<ArrayList<Integer>> getHorizontalWordIndices(char[][] crossword){
+        ArrayList<ArrayList<Integer>> indices = new ArrayList<ArrayList<Integer>>();
+        ArrayList<String> newHorizWords = new ArrayList<String>();
+
+        for(int row=0; row<crossword.length; row++){
+            for(int col=0; col<crossword[row].length; col++){
+                if(crossword[row][col] != '\u0000' && crossword[row][col-1] == '\u0000' &&
+                crossword[row-1][col] == '\u0000' && crossword[row+1][col] == '\u0000'){
+                    ArrayList<Integer> idx = new ArrayList<>();
+                    idx.add(row);
+                    idx.add(col);
+                    indices.add(idx);
+
+                    int listIndex = horizIndices.indexOf(idx);
+                    String word = horizontalWords.get(listIndex);
+                    newHorizWords.add(word);
+                }
+            }
+        }
+        this.horizontalWords = newHorizWords;
+        return indices;
+    }
+
+    /**
+     * Gets the set of indices to be labeled with an index for each work which will be used for hint matching
+     * @param crossword the crossword puzzle
+     * @return an ArrayList<ArrayList<Integer>> containing the indices of the box to be labeled
+     */
+    public ArrayList<ArrayList<Integer>> getVertWordIndices(char[][] crossword){
+        ArrayList<ArrayList<Integer>> indices = new ArrayList<ArrayList<Integer>>();
+        ArrayList<String> newVertWords = new ArrayList<String>();
+
+        for(int row=0; row<crossword.length; row++){
+            for(int col=0; col<crossword[row].length; col++){
+                if(crossword[row][col] != '\u0000' && crossword[row-1][col] == '\u0000' &&
+                        crossword[row][col-1] == '\u0000' && crossword[row][col+1] == '\u0000'){
+                    ArrayList<Integer> idx = new ArrayList<>();
+                    idx.add(row);
+                    idx.add(col);
+                    indices.add(idx);
+
+                    int listIndex = vertIndices.indexOf(idx);
+                    String word = verticalWords.get(listIndex);
+                    newVertWords.add(word);
+                }
+            }
+        }
+        this.verticalWords = newVertWords;
+        return indices;
     }
 
     /**
