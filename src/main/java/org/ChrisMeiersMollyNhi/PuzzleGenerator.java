@@ -319,7 +319,7 @@ public class PuzzleGenerator {
      * @param crossword the crossword puzzle
      * @return an ArrayList<ArrayList<Integer>> containing the indices of the box to be labeled
      */
-    public ArrayList<ArrayList<Integer>> getVertWordIndices(char[][] crossword){
+    public ArrayList<ArrayList<Integer>> getVerticalWordIndices(char[][] crossword){
         ArrayList<ArrayList<Integer>> indices = new ArrayList<ArrayList<Integer>>();
         ArrayList<String> newVertWords = new ArrayList<String>();
 
