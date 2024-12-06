@@ -182,31 +182,43 @@ public class EdtechController extends BaseController {
         // Add TextField nodes dynamically
         for (int i = 0; i < numRows; i++) {
             for (int j = 0; j < numCols; j++) {
-                javafx.scene.control.TextField textField = new javafx.scene.control.TextField();
-                textField.setAlignment(javafx.geometry.Pos.CENTER);
+                // Create a label
+                javafx.scene.control.Label label = new javafx.scene.control.Label();
+                label.setAlignment(javafx.geometry.Pos.CENTER);
 
-                // Set styles for the TextField
+                // Create a pane to contain the label
+                javafx.scene.layout.Pane pane = new javafx.scene.layout.Pane();
+                pane.getChildren().add(label);
+
+
+                // Set styles for the pane and update the label text
                 if (crossword[i][j] == -1) {
-                    textField.setStyle("-fx-background-color: #000; -fx-border-color: black;");
-                    textField.setEditable(false);
+                    pane.setStyle("-fx-border-color: transparent;");
                 } else if (crossword[i][j] == 0) {
-                    textField.setStyle("-fx-background-color: #ffffff; -fx-border-color: black;");
-                    textField.setEditable(false);
+                    pane.setStyle("-fx-border-color: black;");
                 } else {
-                    textField.setText(Integer.toString(crossword[i][j]));
-                    textField.setStyle("-fx-background-color: #ffffff; -fx-border-color: black;");
-                    textField.setEditable(false);
+                    label.setText(Integer.toString(crossword[i][j])); // Set text on the label
+                    pane.setStyle("-fx-border-color: black;");
+                    // Manually position the label with padding
+                    double padding = 1.0; // 1px padding
+                    label.setLayoutX(padding); // Move the label right by 1px
+                    label.setLayoutY(padding); // Move the label down by 1px
+
+                    pane.setPrefWidth(50 + 2 * padding); // Adjust to include padding
+                    pane.setPrefHeight(50 - 2 * padding); // Adjust to include padding
                 }
 
-                // Ensure the TextField fills its cell
-                GridPane.setHgrow(textField, javafx.scene.layout.Priority.ALWAYS);
-                GridPane.setVgrow(textField, javafx.scene.layout.Priority.ALWAYS);
+                // Ensure the pane fills its cell
+                GridPane.setHgrow(pane, javafx.scene.layout.Priority.ALWAYS);
+                GridPane.setVgrow(pane, javafx.scene.layout.Priority.ALWAYS);
 
-                // Add the TextField to the grid
-                gridPane.add(textField, j, i);
+                // Add the pane to the grid
+                gridPane.add(pane, j, i);
             }
         }
+
     }
+
 
 
     public void printScreen(ActionEvent event) throws Exception{

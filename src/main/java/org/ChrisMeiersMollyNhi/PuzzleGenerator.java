@@ -188,8 +188,28 @@ public class PuzzleGenerator {
         int newNumRows = numRows - startRowsToTrim - endRowsToTrim;
         int newNumCols = numCols - startColsToTrim - endColsToTrim;
 
-        // Create a new trimmed grid
-        int[][] trimmedGrid = new int[newNumRows][newNumCols];
+        // Determine the size of the square grid
+        int squareSize = Math.max(newNumRows, newNumCols);
+        int[][] trimmedGrid = new int[squareSize][squareSize];
+
+        // Fill the square grid with a default value (-1)
+        for (int i = 0; i < squareSize; i++) {
+            for (int j = 0; j < squareSize; j++) {
+                trimmedGrid[i][j] = -1;
+            }
+        }
+
+        // Calculate offsets to center the data
+        int rowOffset = (squareSize - newNumRows) / 2;
+        int colOffset = (squareSize - newNumCols) / 2;
+
+        // Copy the relevant data into the square grid, centered
+        for (int row = 0; row < newNumRows; row++) {
+            for (int col = 0; col < newNumCols; col++) {
+                trimmedGrid[row + rowOffset][col + colOffset] =
+                        this.shadowGrid[row + startRowsToTrim][col + startColsToTrim];
+            }
+        }
 
         // Copy the relevant data
         for (int row = 0; row < newNumRows; row++) {
@@ -229,8 +249,8 @@ public class PuzzleGenerator {
         // Pick direction
         // and fill in word in appropriate direction
         if(
-                isValidIndex(row-1, col) && isValidIndex(row+1, col) &&
-                crossword[row -1][col]=='\u0000' && crossword[row +1][col]=='\u0000'
+                (isValidIndex(row-1, col) && crossword[row -1][col]=='\u0000' ) ||
+                (isValidIndex(row+1, col) && crossword[row +1][col]=='\u0000')
         ){
             // Place word vertical
             for(int n = idx; n >0; n--){ // first part of word
@@ -257,7 +277,10 @@ public class PuzzleGenerator {
             // Add word to list of words
             this.verticalWords.add(wordNumber+" "+word);
         }
-        if((crossword[row][col -1]=='\u0000' && crossword[row][col +1]=='\u0000' )){
+        if(
+                isValidIndex(row, col-1) && isValidIndex(row, col+1) &&
+                crossword[row][col -1]=='\u0000' && crossword[row][col +1]=='\u0000'
+        ){
             // Place word horizontal
             for(int n = idx; n >0; n--){ // first part of word
                 if (firstLetter) {
