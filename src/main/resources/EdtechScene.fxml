@@ -20,8 +20,8 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="btnGoBack" layoutY="74.0" mnemonicParsing="false" onAction="#switchToMainScene" style="-fx-background-color: #fff; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 1px; -fx-border-color: #000;" text="Go Back" />
-                  <Button fx:id="btnRegenerateHints" layoutX="-24.0" layoutY="115.0" mnemonicParsing="false" onAction="#regenerateHints" style="-fx-background-color: #fff; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 1px; -fx-border-color: #000;" text="Regenerate Hints" />
+                  <Button fx:id="btnGoBack" layoutY="74.0" mnemonicParsing="false" onAction="#switchToMainScene" style="-fx-background-color: #fff; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 1px; -fx-border-color: #000; -fx-font-family: sans-serif;" text="Go Back" />
+                  <Button fx:id="btnRegenerateHints" layoutX="-24.0" layoutY="115.0" mnemonicParsing="false" onAction="#regenerateHints" style="-fx-background-color: #fff; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-width: 1px; -fx-border-color: #000; -fx-font-family: sans-serif;" text="Regenerate Hints" />
                </children>
             </Pane>
             <HBox fx:id="hboxMainContainer" prefHeight="100.0" prefWidth="200.0">
