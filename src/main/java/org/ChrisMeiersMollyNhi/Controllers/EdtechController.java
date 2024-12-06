@@ -1,6 +1,7 @@
 
 package org.ChrisMeiersMollyNhi.Controllers;
 
+import com.sun.tools.jconsole.JConsoleContext;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -13,6 +14,9 @@ import javafx.scene.control.TextArea;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class EdtechController extends BaseController {
 
@@ -30,42 +34,43 @@ public class EdtechController extends BaseController {
         for (String line : lines) {
             getInput.add(line.replaceAll("\\s", ""));
         }
-        PuzzleGenerator edTechPuzzle = new PuzzleGenerator(getInput);
-        boolean formattingStatus = edTechPuzzle.isValidWordList();
-        char[][] crossword = edTechPuzzle.generate();
-
-        this.verticalWordsList = edTechPuzzle.getVerticalWords();
-        this.horizontalWordsList = edTechPuzzle.getHorizontalWords();
-        boolean wordLengthStatus =
-            this.verticalWordsList.size() + this.horizontalWordsList.size() == getInput.size();
-        ;
 
         // Check input formatting
-        if (formattingStatus && wordLengthStatus && checkFormatting(getInput)) {
-            buildCrossword(crossword);
-
-
-            regenerateHints();
+        if (containsDuplicates(getInput)){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Duplicate Words Detected");
+            alert.setHeaderText("Duplicate Words Detected");
+            alert.setContentText("Please remove duplicate words from your input and try again.");
+            alert.showAndWait();
         } else {
-                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                 alert.setTitle("Error In Text Input");
-                 alert.setHeaderText("Please fix your text input");
-                 alert.setContentText("Please remove any special characters or numbers and try again. Additionally, you may be receiving this error if we could not create a valid crossword from the lists you provided.");
-                 alert.showAndWait();
-        }
-    }
+            boolean retry = true;
+            for (int i = 0; i < 10; i++) {
+                Collections.shuffle(getInput);
+                PuzzleGenerator edTechPuzzle = new PuzzleGenerator(getInput);
+                boolean formattingStatus = edTechPuzzle.isValidWordList();
+                int[][] crossword = edTechPuzzle.generate();
 
-    private boolean checkFormatting(ArrayList<String> getInput) {
-        //check if getInput has only letters in each string
-        ArrayList<String> wordList = new ArrayList<>();
-        for (String line : getInput) {
-            if (!line.matches("[a-zA-Z]+")) {
-                return false;
+                this.verticalWordsList = edTechPuzzle.getVerticalWords();
+                this.horizontalWordsList = edTechPuzzle.getHorizontalWords();
+                boolean wordLengthStatus = this.verticalWordsList.size() + this.horizontalWordsList.size() == getInput.size();
+
+
+                if (formattingStatus && wordLengthStatus) {
+                    buildCrossword(crossword);
+                    regenerateHints();
+                    retry = false;
+                    break;
+                }
+                System.out.println("try: " + i);
             }
-            wordList.add(line);
+            if (retry){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Invalid Word Length");
+                alert.setHeaderText("Invalid Word Length");
+                alert.setContentText("Unable to build the crossword structure because there are too few words, or the words are incompatible");
+                alert.showAndWait();
+            }
         }
-
-        return true;
     }
 
     /**
@@ -75,6 +80,10 @@ public class EdtechController extends BaseController {
      */
     public void regenerateHints(ActionEvent event) throws Exception{
         regenerateHints();
+    }
+
+    private boolean containsDuplicates(ArrayList<String> arr){
+        return arr.stream().distinct().count() != arr.size();
     }
 
     public void regenerateHints() throws Exception{
@@ -93,7 +102,7 @@ public class EdtechController extends BaseController {
             // Add new hints
             for (String word : this.verticalWordsList) {
                 String hint = CallAPI.generateHint(word);
-                Label hintLabel = new Label(hint);
+                Label hintLabel = new Label(extractInitialDigits(word) + " " + hint);
                 hintLabel.setWrapText(true); // Enable wrapping
                 hintLabel.setMaxWidth(200); // Set a maximum width (adjust as needed)
                 vboxLeftContainer.getChildren().add(hintLabel);
@@ -101,7 +110,7 @@ public class EdtechController extends BaseController {
 
             for (String word : this.horizontalWordsList) {
                 String hint = CallAPI.generateHint(word);
-                Label hintLabel = new Label(hint);
+                Label hintLabel = new Label(extractInitialDigits(word) + " " + hint);
                 hintLabel.setWrapText(true); // Enable wrapping
                 hintLabel.setMaxWidth(200); // Set a maximum width (adjust as needed)
                 vboxRightContainer.getChildren().add(hintLabel);
@@ -119,6 +128,23 @@ public class EdtechController extends BaseController {
     }
 
     /**
+     * Extracts all initial digits from the given word using regex.
+     * If no initial digits are found, returns an empty string.
+     *
+     * @param word The word from which to extract initial digits.
+     * @return A string containing the initial digits, or empty if none found.
+     */
+    private String extractInitialDigits(String word) {
+        Pattern INITIAL_DIGITS_PATTERN = Pattern.compile("^\\d+");
+        Matcher matcher = INITIAL_DIGITS_PATTERN.matcher(word);
+        if (matcher.find()) {
+            return matcher.group();
+        } else {
+            return ""; // or any default value you'd prefer
+        }
+    }
+
+    /**
      * inside of the element with fx:id crosswordDomain, we need to build our crossword
      * to do this, we will need to create a grid of box elements, which are eather black if the crossword
      * char array element is '\u0000',
@@ -126,7 +152,7 @@ public class EdtechController extends BaseController {
      *
      * @param crossword
      */
-    private void buildCrossword(char[][] crossword) {
+    private void buildCrossword(int[][] crossword) {
         // Get reference to the GridPane container
         Node node = mainScene.getRoot().lookup("#crosswordDomain");
         javafx.scene.layout.GridPane gridPane = (javafx.scene.layout.GridPane) node;
@@ -160,11 +186,14 @@ public class EdtechController extends BaseController {
                 textField.setAlignment(javafx.geometry.Pos.CENTER);
 
                 // Set styles for the TextField
-                if (crossword[i][j] == '\u0000') {
+                if (crossword[i][j] == -1) {
                     textField.setStyle("-fx-background-color: #000; -fx-border-color: black;");
                     textField.setEditable(false);
+                } else if (crossword[i][j] == 0) {
+                    textField.setStyle("-fx-background-color: #ffffff; -fx-border-color: black;");
+                    textField.setEditable(false);
                 } else {
-//                    textField.setText(Character.toString(crossword[i][j]));
+                    textField.setText(Integer.toString(crossword[i][j]));
                     textField.setStyle("-fx-background-color: #ffffff; -fx-border-color: black;");
                     textField.setEditable(false);
                 }

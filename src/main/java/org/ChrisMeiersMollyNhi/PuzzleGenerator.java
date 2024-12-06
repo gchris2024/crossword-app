@@ -40,6 +40,9 @@ public class PuzzleGenerator {
     private ArrayList<ArrayList<Integer>> horizIndices;
     private ArrayList<ArrayList<Integer>> vertIndices;
 
+    /** An int[][] of the ints which represent the word numbers */
+    private int[][] shadowGrid;
+
     /**
      * Initialize list of words and size of puzzle grid
      *
@@ -47,8 +50,8 @@ public class PuzzleGenerator {
      */
     public PuzzleGenerator(ArrayList<String> words){
         this.words = words;
-        this.numRows = 20; // Temporary value for initial development
-        this.numCols = 20; // Temporary value for initial development
+        this.numRows = 75; // Temporary value for initial development
+        this.numCols = 75; // Temporary value for initial development
         this.verticalWords = new ArrayList<>(); // Initialize verticalWords
         this.horizontalWords = new ArrayList<>(); // Initialize horizontalWords
         this.horizIndices = new ArrayList<ArrayList<Integer>>();
@@ -95,8 +98,15 @@ public class PuzzleGenerator {
      * @return A 2D ArrayList representing the crossword puzzle,
      *          where each item is either a letter or a blank spot
      */
-    public char[][] generate(){
+    public int[][] generate(){
         char[][] crossword = new char[numRows][numCols];
+        this.shadowGrid = new int[numRows][numCols];
+        //init all spaces in shadowGrid to -1
+        for(int r=0;r<numRows;r++) {
+            for(int c=0;c<numCols;c++) {
+                shadowGrid[r][c]=-1;
+            }
+        }
 
         // Place first word in center of puzzle
         placeFirstWord(crossword);
@@ -113,7 +123,7 @@ public class PuzzleGenerator {
                         // Check if letter in puzzle space matches a letter in the word to place
                         // and confirm that the space is available as an intersection point
                         if(crossword[row][col] == letter && validateOpen(crossword,row,col) && wordFits(crossword, row, col, word) && !placed){
-                            placeOtherWords(letter, word, crossword, row, col);
+                            placeOtherWords(letter, word, crossword, row, col, i);
                             placed = true;
                         }
                     }
@@ -121,7 +131,79 @@ public class PuzzleGenerator {
             }
         }
 
-        return crossword;
+        trim();
+        return this.shadowGrid;
+    }
+
+    /**
+     * scans for rows and columns of this.shadowGrid that contain ONLY -1, and removes those rows or columns
+     */
+    private void trim () {
+        int numRows = this.shadowGrid.length;
+        int numCols = this.shadowGrid[0].length;
+        int startColsToTrim = 0;
+        int startRowsToTrim = 0;
+        int endColsToTrim = 0;
+        int endRowsToTrim = 0;
+        boolean postBlock=false; //activates when we hit the first letter
+        for (int row=0;row<numRows;row++) {
+
+            boolean emptyRow=true;
+            for (int col=0;col<numCols;col++){
+                if(this.shadowGrid[row][col]!=-1){
+                    emptyRow=false;
+                    postBlock=true;
+                    break;
+                }
+            }
+            if (emptyRow){
+                if(postBlock){
+                    endRowsToTrim++;
+                } else {
+                    startRowsToTrim++;
+                }
+            }
+        }
+
+        postBlock=false;
+        for (int col=0;col<numCols;col++) {
+            boolean emptyCol=true;
+            for (int row=0;row<numRows;row++){
+                if(this.shadowGrid[row][col]!=-1){
+                    emptyCol=false;
+                    postBlock=true;
+                    break;
+                }
+            }
+            if(emptyCol){
+                if(postBlock){
+                    endColsToTrim++;
+                } else {
+                    startColsToTrim++;
+                }
+            }
+        }
+
+        //trim off excess rows and cols
+        int newNumRows = numRows - startRowsToTrim - endRowsToTrim;
+        int newNumCols = numCols - startColsToTrim - endColsToTrim;
+
+        // Create a new trimmed grid
+        int[][] trimmedGrid = new int[newNumRows][newNumCols];
+
+        // Copy the relevant data
+        for (int row = 0; row < newNumRows; row++) {
+            System.arraycopy(
+                    this.shadowGrid[row + startRowsToTrim],
+                    startColsToTrim,
+                    trimmedGrid[row],
+                    0,
+                    newNumCols
+            );
+        }
+
+        // Assign the trimmed grid back to shadowGrid
+        this.shadowGrid = trimmedGrid;
     }
 
     /**
@@ -133,7 +215,8 @@ public class PuzzleGenerator {
      * @param row the row index of the intersection point between words
      * @param col the column index of the intersection point between words
      */
-    private void placeOtherWords(char letter, String word, char[][] crossword, int row, int col) {
+    private void placeOtherWords(char letter, String word, char[][] crossword, int row, int col, int wordNumber) {
+        wordNumber++;
         char[] lettersToPlace = word.toCharArray();
         int idx = -1;
         for(int i=0; i<lettersToPlace.length; i++){
@@ -141,11 +224,22 @@ public class PuzzleGenerator {
                 idx = i;
             }
         }
+        boolean firstLetter = true;
+
         // Pick direction
         // and fill in word in appropriate direction
-        if((crossword[row -1][col]=='\u0000' && crossword[row +1][col]=='\u0000' )){
+        if(
+                isValidIndex(row-1, col) && isValidIndex(row+1, col) &&
+                crossword[row -1][col]=='\u0000' && crossword[row +1][col]=='\u0000'
+        ){
             // Place word vertical
             for(int n = idx; n >0; n--){ // first part of word
+                if (firstLetter) {
+                    this.shadowGrid[row-n][col]=wordNumber;
+                    firstLetter=false;
+                }else{
+                    this.shadowGrid[row-n][col]=0;
+                }
                 crossword[row -n][col] = lettersToPlace[idx-n];
 
                 if(vertIndices.size()!=this.verticalWords.size()){
@@ -157,14 +251,21 @@ public class PuzzleGenerator {
             }
             for(int n = 1; n<lettersToPlace.length-idx; n++){ // second part of word
                 crossword[row +n][col] = lettersToPlace[idx+n];
+                this.shadowGrid[row+n][col]=0;
             }
 
             // Add word to list of words
-            this.verticalWords.add(word);
+            this.verticalWords.add(wordNumber+" "+word);
         }
         if((crossword[row][col -1]=='\u0000' && crossword[row][col +1]=='\u0000' )){
             // Place word horizontal
             for(int n = idx; n >0; n--){ // first part of word
+                if (firstLetter) {
+                    this.shadowGrid[row][col-n]=wordNumber;
+                    firstLetter=false;
+                }else{
+                    this.shadowGrid[row][col-n]=0;
+                }
                 crossword[row][col -n] = lettersToPlace[idx-n];
 
                 if(horizIndices.size()!=this.horizontalWords.size()){
@@ -176,10 +277,11 @@ public class PuzzleGenerator {
             }
             for(int n = 1; n<lettersToPlace.length-idx; n++){ // second part of word
                 crossword[row][col +n] = lettersToPlace[idx+n];
+                this.shadowGrid[row][col+n]=0;
             }
 
             // Add word to list of words
-            this.horizontalWords.add(word);
+            this.horizontalWords.add(wordNumber+" "+word);
         }
     }
 
@@ -190,14 +292,20 @@ public class PuzzleGenerator {
      */
     private void placeFirstWord(char[][] crossword) {
         String firstWord = words.getFirst();
-        this.horizontalWords.add(firstWord);
+        this.horizontalWords.add("1 "+firstWord);
         char[] chars = firstWord.toCharArray();
         int row = numRows/2;
         int charIdx = 0;
+        boolean firstLetter = true;
         for(int col=(numCols/2)-(chars.length/2); col<(numCols/2)-(chars.length/2)+chars.length; col++){
             char c = chars[charIdx];
             crossword[row][col] = c;
             charIdx++;
+            if (firstLetter){
+                shadowGrid[row][col]=1;
+            } else{
+                shadowGrid[row][col]=0;
+            }
 
             // Save index of first letter
             if(horizIndices.size()==0){
@@ -206,6 +314,7 @@ public class PuzzleGenerator {
                 idx.add(col);
                 horizIndices.add(idx);
             }
+            firstLetter=false;
         }
 
     }
@@ -221,10 +330,19 @@ public class PuzzleGenerator {
     public boolean validateOpen(char[][] crossword, int row, int col){
         boolean open = true;
         // Validate that intersection point  is open
-        if((crossword[row-1][col]!='\u0000' && crossword[row][col-1]!='\u0000' )||
-                (crossword[row+1][col]!='\u0000' && crossword[row][col+1]!='\u0000')||
-                (crossword[row-1][col]!='\u0000' && crossword[row][col+1]!='\u0000' )||
-                (crossword[row+1][col]!='\u0000' && crossword[row][col-1]!='\u0000' )
+        if(     (
+                    isValidIndex(row-1, col) && isValidIndex(row, col-1) &&
+                    crossword[row-1][col]!='\u0000' && crossword[row][col-1]!='\u0000'
+                )|| (
+                    isValidIndex(row+1, col) && isValidIndex(row, col+1) &&
+                    crossword[row+1][col]!='\u0000' && crossword[row][col+1]!='\u0000'
+                )||(
+                    isValidIndex(row-1, col) && isValidIndex(row, col+1) &&
+                    crossword[row-1][col]!='\u0000' && crossword[row][col+1]!='\u0000'
+                )||(
+                    isValidIndex(row+1, col) && isValidIndex(row, col-1) &&
+                    crossword[row+1][col]!='\u0000' && crossword[row][col-1]!='\u0000'
+                )
         ) {
                 open = false;
         }
@@ -251,42 +369,78 @@ public class PuzzleGenerator {
         int endLength = word.length()-letterIdx;
 
         // Determine word orientation and check for fit
-        if((crossword[row -1][col]=='\u0000' && crossword[row +1][col]=='\u0000' )){
+        if(
+                isValidIndex(row-1, col) && isValidIndex(row+1, col) &&
+                crossword[row -1][col]=='\u0000' && crossword[row +1][col]=='\u0000'
+        ){
             // Vertical orientation
             for(int n = letterIdx; n >0; n--){ // first part of word
-                if(crossword[row -n][col] != '\u0000' || crossword[row-n][col-1] != '\u0000' || crossword[row-n][col+1] != '\u0000'){
+                if(
+                        (isValidIndex(row-n, col) && crossword[row -n][col] != '\u0000') ||
+                        (isValidIndex(row-n, col-1) && crossword[row-n][col-1] != '\u0000') ||
+                        (isValidIndex(row-n, col+1) && crossword[row-n][col+1] != '\u0000')
+                ){
                     fits = false;
                 }
             }
             for(int n = 1; n<lettersToPlace.length-letterIdx; n++){ // second part of word
-                if (crossword[row +n][col] != '\u0000' || crossword[row+n][col-1] != '\u0000' || crossword[row+n][col+1] != '\u0000'){
+                if (
+                        (isValidIndex(row+n, col) && crossword[row +n][col] != '\u0000') ||
+                        (isValidIndex(row+n, col-1) && crossword[row+n][col-1] != '\u0000') ||
+                        (isValidIndex(row+n, col+1) && crossword[row+n][col+1] != '\u0000')
+                ){
                     fits = false;
                 }
             }
             // Ensures words don't run into each other consecutively
-            if(crossword[row-beginLength][col] != '\u0000' || crossword[row+beginLength][col] != '\u0000'){
+            if(
+                    (isValidIndex(row-beginLength, col) && crossword[row-beginLength][col] != '\u0000') ||
+                    (isValidIndex(row+beginLength, col) && crossword[row+beginLength][col] != '\u0000')
+            ){
                 fits = false;
             }
         }
         if((crossword[row][col -1]=='\u0000' && crossword[row][col +1]=='\u0000' )){
             // Horizontal orientation
             for(int n = letterIdx; n >0; n--){ // first part of word
-                if (crossword[row][col -n] != '\u0000' || crossword[row-1][col-n] != '\u0000' || crossword[row+1][col-n] != '\u0000'){
+                if (
+                        (isValidIndex(row, col-n) && crossword[row][col -n] != '\u0000') ||
+                        (isValidIndex(row-1, col-n) && crossword[row-1][col-n] != '\u0000') ||
+                        (isValidIndex(row+1, col-n) && crossword[row+1][col-n] != '\u0000')
+                ){
                     fits = false;
                 }
             }
             for(int n = 1; n<lettersToPlace.length-letterIdx; n++){ // second part of word
-                if (crossword[row][col +n] != '\u0000' || crossword[row-1][col+n] != '\u0000' || crossword[row+1][col+n] != '\u0000'){
+                if (
+                        (isValidIndex(row, col+n) && crossword[row][col +n] != '\u0000') ||
+                        (isValidIndex(row-1, col+n) && crossword[row-1][col+n] != '\u0000') ||
+                        (isValidIndex(row+1, col+n) && crossword[row+1][col+n] != '\u0000')
+                ){
                     fits = false;
                 }
             }
             // Ensures words don't run into each other consecutively
-            if(crossword[row][col-beginLength] != '\u0000' || crossword[row][col+endLength] != '\u0000'){
+            if(
+                    (isValidIndex(row, col-beginLength) && crossword[row][col-beginLength] != '\u0000' )||
+                    (isValidIndex(row, col+endLength) && crossword[row][col+endLength] != '\u0000')
+            ){
                 fits = false;
             }
         }
         return fits;
     }
+
+    /**
+     * Checks if the given coordinates are within bounds of the puzzle grid
+     * @param row the row coordinate to check
+     * @param col the column coordinate to check
+     * @return a boolean value indicating if the coordinates are valid
+     */
+    private boolean isValidIndex(int row, int col) {
+        return (row >= 0 && row < numRows && col >= 0 && col < numCols);
+    }
+
 
     /**
      * Gets the set of indices to be labeled with an index for each work which will be used for hint matching
