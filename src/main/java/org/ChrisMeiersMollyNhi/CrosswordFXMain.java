@@ -20,6 +20,8 @@ public class CrosswordFXMain extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage;
+        this.primaryStage.setMinWidth(850); // Match the Min Width set in Scene Builder
+        this.primaryStage.setMinHeight(600); // Match the Min Height set in Scene Builder
 
         primaryStage.setTitle("Crossword App");
 
