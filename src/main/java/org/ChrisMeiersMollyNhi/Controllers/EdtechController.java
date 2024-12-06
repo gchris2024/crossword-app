@@ -81,27 +81,32 @@ public class EdtechController extends BaseController {
         if (this.verticalWordsList != null && this.horizontalWordsList != null){
 
             // Get references to the VBox containers
-            VBox vboxLeftContainer = (VBox) mainScene.getRoot().lookup("#vboxLeftContainer");
-            VBox vboxRightContainer = (VBox) mainScene.getRoot().lookup("#vboxRightContainer");
+            VBox vboxLeftContainer = (VBox) mainScene.getRoot().lookup("#leftHints");
+            VBox vboxRightContainer = (VBox) mainScene.getRoot().lookup("#rightHints");
 
             // Clear existing hints
             vboxLeftContainer.getChildren().clear();
             vboxRightContainer.getChildren().clear();
 
-//            CallAPI callApi = new CallAPI();
+            // CallAPI callApi = new CallAPI();
 
             // Add new hints
             for (String word : this.verticalWordsList) {
                 String hint = CallAPI.generateHint(word);
                 Label hintLabel = new Label(hint);
+                hintLabel.setWrapText(true); // Enable wrapping
+                hintLabel.setMaxWidth(200); // Set a maximum width (adjust as needed)
                 vboxLeftContainer.getChildren().add(hintLabel);
             }
 
             for (String word : this.horizontalWordsList) {
                 String hint = CallAPI.generateHint(word);
                 Label hintLabel = new Label(hint);
+                hintLabel.setWrapText(true); // Enable wrapping
+                hintLabel.setMaxWidth(200); // Set a maximum width (adjust as needed)
                 vboxRightContainer.getChildren().add(hintLabel);
             }
+
 
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

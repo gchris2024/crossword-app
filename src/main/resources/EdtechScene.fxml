@@ -33,7 +33,7 @@
                               <Label fx:id="lblDownHeader" text="Down" />
                            </children>
                         </HBox>
-                        <TextArea prefHeight="176.0" prefWidth="118.0" text="1) Hint 1&#10;2) Hint 2&#10;3) Hint 3&#10;4) Hint 4&#10;5) Hint 5&#10;6) Hint 6&#10;7) Hint 7&#10;8) Hint 8" />
+                        <VBox fx:id="leftHints" prefHeight="200.0" prefWidth="100.0" />
                      </children>
                   </VBox>
                </children>
@@ -45,7 +45,7 @@
                         <Label fx:id="lblAcrossHeader" alignment="CENTER" text="Across" textAlignment="CENTER" />
                      </children>
                   </HBox>
-                  <TextArea prefHeight="177.0" prefWidth="158.0" text="1) Hint 1&#10;2) Hint 2&#10;3) Hint 3&#10;4) Hint 4&#10;5) Hint 5&#10;6) Hint 6&#10;7) Hint 7&#10;8) Hint 8" />
+                  <VBox fx:id="rightHints" prefHeight="200.0" prefWidth="100.0" />
                </children>
             </VBox>
          </children>
@@ -84,7 +84,7 @@
       </BorderPane>
       <BorderPane layoutX="50.0" layoutY="49.0" prefHeight="278.0" prefWidth="265.0" style="-fx-border-radius: 10px; -fx-background-radius: 10px; -fx-background-color: #fff; -fx-padding: 10px; -fx-border-color: #000; -fx-border-width: 2px;" AnchorPane.bottomAnchor="220.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="10.0">
          <center>
-            <GridPane fx:id="crosswordDomain" gridLinesVisible="true" BorderPane.alignment="CENTER">
+            <GridPane fx:id="crosswordDomain" gridLinesVisible="true" minHeight="300.0" minWidth="300.0" prefHeight="544.0" prefWidth="541.0" BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
