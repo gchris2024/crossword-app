@@ -9,6 +9,11 @@ import org.ChrisMeiersMollyNhi.Controllers.BaseController;
 
 import java.io.IOException;
 
+/**
+ * Main class for the CrosswordFX application.
+ * This class extends the JavaFX Application class and serves as the entry point for the application.
+ * It initializes the primary stage and sets the initial scene.
+ */
 public class CrosswordFXMain extends Application {
 
     private Stage primaryStage;
@@ -17,6 +22,14 @@ public class CrosswordFXMain extends Application {
         launch(args);
     }
 
+    /**
+     * Initializes and displays the primary stage for the application.
+     * Sets the minimum width and height for the stage and sets the title.
+     * Loads and switches to the main scene from the specified FXML file.
+     *
+     * @param primaryStage The primary stage for this application.
+     * @throws IOException If the FXML file cannot be loaded.
+     */
     @Override
     public void start(Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage;
@@ -28,6 +41,13 @@ public class CrosswordFXMain extends Application {
         switchScene("/MainScene.fxml");
     }
 
+    /**
+     * Switches the current scene to a new scene specified by the given FXML file.
+     * Loads the FXML file, sets the controller, and displays the new scene on the primary stage.
+     *
+     * @param fxmlFile the path to the FXML file to load the new scene from
+     * @throws IOException if the FXML file cannot be loaded
+     */
     public void switchScene(String fxmlFile) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(fxmlFile));
@@ -40,6 +60,11 @@ public class CrosswordFXMain extends Application {
         primaryStage.show();
     }
 
+    /**
+     * Retrieves the root node of the current scene associated with the primary stage.
+     *
+     * @return the root node of the current scene, or null if no scene is set.
+     */
     public Parent getRoot() {
         if (primaryStage.getScene() != null) {
             return primaryStage.getScene().getRoot();

@@ -26,6 +26,15 @@ public class EdtechController extends BaseController {
         mainScene.switchScene("/MainScene.fxml");
     }
 
+    /**
+     * Generates a crossword puzzle based on the input from a TextArea.
+     * The method reads words from the TextArea, checks for duplicates, and attempts to generate a valid puzzle.
+     * If duplicates are found, an error alert is shown. If the puzzle cannot be generated after 10 attempts,
+     * an error alert is shown indicating invalid word length or incompatibility.
+     *
+     * @param event The ActionEvent triggered by the user interaction.
+     * @throws Exception if an error occurs during puzzle generation.
+     */
     public void generatePuzzle(ActionEvent event) throws Exception{
         TextArea textArea = (TextArea) mainScene.getRoot().lookup("#textareaWordList");
         //take the text and put it into an arraylist of strings
@@ -82,10 +91,26 @@ public class EdtechController extends BaseController {
         regenerateHints();
     }
 
+    /**
+     * Checks if the given ArrayList contains any duplicate elements.
+     *
+     * @param arr the ArrayList of Strings to be checked for duplicates
+     * @return true if duplicates are found, false otherwise
+     */
     private boolean containsDuplicates(ArrayList<String> arr){
         return arr.stream().distinct().count() != arr.size();
     }
 
+    /**
+     * Regenerates the hints for the vertical and horizontal word lists.
+     * <p>
+     * This method clears existing hints from the left and right VBox containers
+     * and generates new hints for each word in the vertical and horizontal word lists.
+     * The hints are displayed as labels with wrapped text and a maximum width.
+     * If the word lists are not initialized, an error alert is shown.
+     *
+     * @throws Exception if an error occurs during hint generation.
+     */
     public void regenerateHints() throws Exception{
         if (this.verticalWordsList != null && this.horizontalWordsList != null){
 
@@ -218,11 +243,4 @@ public class EdtechController extends BaseController {
         }
 
     }
-
-
-
-    public void printScreen(ActionEvent event) throws Exception{
-
-    }
-
 }
