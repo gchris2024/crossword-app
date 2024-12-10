@@ -12,7 +12,7 @@
  * Package: org.ChrisMeiersMollyNhi
  * Class: PuzzleGenerator
  *
- * Description:
+ * Description: This class generates the puzzle structure
  *
  * ****************************************
  */

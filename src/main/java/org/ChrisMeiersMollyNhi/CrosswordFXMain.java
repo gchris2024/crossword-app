@@ -1,3 +1,26 @@
+/* *****************************************
+ * CSCI 205 - Software Engineering and Design
+ * Fall 2024
+ * Instructor: Prof. Lily
+ *
+ * Name: Molly Yoder
+ * Section: 10am
+ * Date: 12/9/2024
+ * Time: 1:09 PM
+ *
+ * Project: csci205_final_project
+ * Package: org.ChrisMeiersMollyNhi
+ * Class: CrosswordFXMain
+ *
+ * Description:
+ * This class represents the main entry point for the CrosswordFX application.
+ * It initializes the primary stage and loads the initial scene from an FXML file.
+ * It also provides methods to switch between scenes within the application.
+
+ *
+ * ****************************************
+ */
+
 package org.ChrisMeiersMollyNhi;
 
 import javafx.application.Application;

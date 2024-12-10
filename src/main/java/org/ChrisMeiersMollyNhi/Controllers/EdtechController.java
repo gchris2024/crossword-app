@@ -1,4 +1,22 @@
-
+/* *****************************************
+ * CSCI 205 - Software Engineering and Design
+ * Fall 2024
+ * Instructor: Prof. Lily
+ *
+ * Name: Molly Yoder
+ * Section: 10am
+ * Date: 12/9/2024
+ * Time: 1:09 PM
+ *
+ * Project: csci205_final_project
+ * Package: org.ChrisMeiersMollyNhi
+ * Class: EdtechController
+ *
+ * Description: EdtechController handles the logic for generating puzzles and displaying them in the GUI.
+ * It also manages the display of hints for both vertical and horizontal words within the crossword puzzle.
+ *
+ * ****************************************
+ */
 package org.ChrisMeiersMollyNhi.Controllers;
 
 import com.sun.tools.jconsole.JConsoleContext;
