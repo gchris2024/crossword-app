@@ -16,6 +16,7 @@
  * A class that interacts with the Groq API to generate a hint for a given word.
  * The class establishes a connection to the API, sends a message, and retrieves
  * the generated hint from the model's response.
+ * Reference source: https://github.com/Ayush-singh141/Code_Alpha_Artificial_Intelligence_Chatbot/blob/main/ChatBot.java
  * ****************************************
  */
 
