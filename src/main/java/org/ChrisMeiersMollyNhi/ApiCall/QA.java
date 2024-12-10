@@ -50,7 +50,7 @@ public class QA{
     public QA(){
         this.url = "https://api.groq.com/openai/v1/chat/completions";
         this.apiKey = System.getenv("API_KEY");
-        this.model = "llama3-groq-8b-8192-tool-use-preview";
+        this.model = "llama-3.3-70b-versatile";
 
         if (this.apiKey == null || this.apiKey.isEmpty()){
             throw new IllegalStateException("API key isn't set in environment variables");

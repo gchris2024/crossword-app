@@ -1,4 +1,23 @@
-
+/* *****************************************
+ * CSCI 205 - Software Engineering and Design
+ * Fall 2024
+ * Instructor: Prof. Lily
+ *
+ * Name: Molly Yoder
+ * Section: 10am
+ * Date: 11/14/2024
+ * Time: 1:09 PM
+ *
+ * Project: csci205_final_project
+ * Package: org.ChrisMeiersMollyNhi
+ * Class: GameController
+ *
+ * Description: This class contains methods that are used in the game scene.
+ * It is responsible for generating a crossword puzzle based on the list of words provided by the user.
+ * The generated crossword puzzle can then be checked against the correct solution to determine if it was solved correctly.
+ *
+ * ****************************************
+ */
 package org.ChrisMeiersMollyNhi.Controllers;
 
 import javafx.event.ActionEvent;
