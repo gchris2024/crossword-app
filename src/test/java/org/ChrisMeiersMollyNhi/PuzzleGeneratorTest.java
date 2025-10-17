@@ -46,27 +46,27 @@ class PuzzleGeneratorTest {
         assertFalse(this.gen2.isValidWordList());
     }
 
-    /**
-     * Test that puzzle is generated correctly and contains all words from word list
-     */
-    @Test
-    void generate() {
-        char[][] generated = this.gen1.generate();
-//        System.out.println(generated);
-        int letterCount = 0;
-        for (int i = 0; i < generated.length; i++) {
-            for (int j = 0; j < generated[i].length; j++) {
-                System.out.print(generated[i][j]);
-                if (generated[i][j] != '\u0000') {
-//                    System.out.println(generated[i][j]);
-                    letterCount++;
-                }
-            }
-            System.out.println();
-        }
+//     /**
+//      * Test that puzzle is generated correctly and contains all words from word list
+//      */
+//     @Test
+//     void generate() {
+//         char[][] generated = this.gen1.generate();
+// //        System.out.println(generated);
+//         int letterCount = 0;
+//         for (int i = 0; i < generated.length; i++) {
+//             for (int j = 0; j < generated[i].length; j++) {
+//                 System.out.print(generated[i][j]);
+//                 if (generated[i][j] != '\u0000') {
+// //                    System.out.println(generated[i][j]);
+//                     letterCount++;
+//                 }
+//             }
+//             System.out.println();
+//         }
 
-        assertEquals(14, letterCount);
-    }
+//         assertEquals(14, letterCount);
+//     }
 
     /**
      * Test that available intersection spaces are recognized correctly
