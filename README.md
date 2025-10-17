@@ -54,8 +54,8 @@ This will be read in Java using `System.getenv("API_KEY")`.
 ``` bash
 ./gradlew clean build
 ```
-2. In the terminal, make sure you are in the correct directory, type the following command: API_KEY=yourkey /gradlew run.
 Note: CrosswordFXMain is our main class to run the program.
+
 ---
 
 ### 4. Run the program
